@@ -10,7 +10,7 @@ class Bed:
 		self.plants = dict() #keeps track of plants in bed (name is key)
 		self.num_plants = 0
 		self.num_sensors = 0
-		self.sensors = list() #Sensors will be associated with beds
+		self.sensors = dict() #Sensors will be associated with beds
 		self.actuators = list()
 		self.num_actuators = list()
 		self.properties = dict()
@@ -24,8 +24,7 @@ class Bed:
 		del self.plants[plant.name]
 
 	def add_sensor(self, name, new_sensor):
-		toadd = (name, new_sensor)
-		self.sensors.append(toadd)
+		self.sensors[name] = new_sensor
 		self.num_sensors += 1
 
 	def add_actuators(self, name, actuator):

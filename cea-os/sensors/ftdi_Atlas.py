@@ -6,7 +6,7 @@ from pylibftdi.device import Device
 from pylibftdi.driver import FtdiError
 
 class AtlasFtdi(Device):
-	def __init__(self, serial_device, interface = "ftdi"):
+	def __init__(self, serial_device):
         Device.__init__(self, mode='t', device_id=serial_device)
 
         self.send_cmd("C,0")  # turn off continuous mode
@@ -14,7 +14,7 @@ class AtlasFtdi(Device):
         self.flush()
 
         self.setup = True
-        self.interface = interface
+        self.interface = "ftdi"
 
     def query(self, query_str):
         """ Send command and return reply """

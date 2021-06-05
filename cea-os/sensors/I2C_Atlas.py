@@ -11,13 +11,13 @@ class AtlasI2C(Object):
     default_bus = 1  # the default bus for I2C on the newer Raspberry Pis, certain older boards use bus 0
     default_address = 98  # the default address for the sensor
 
-    def __init__(self, interface = "I2C",i2c_address=default_address, i2c_bus=default_bus):
+    def __init__(self, i2c_address=default_address, i2c_bus=default_bus):
 
         # open two file streams, one for reading and one for writing
         # the specific I2C channel is selected with bus
         # it is usually 1, except for older revisions where its 0
         # wb and rb indicate binary read and write
-        self.interface = interface
+        self.interface = "I2C"
         self.current_addr = i2c_address
         self.setup = False
         try:

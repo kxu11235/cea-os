@@ -7,15 +7,16 @@ from ..sensors.sensor_definition import Sensor
 
 class Environment:
 	#temperature, nutrients, water, lighting, light intensity will be added later
-	def __init__(self):
+	def __init__(self, name):
 		# I use a dictionary because we do not want duplicates names
 		self.beds = dict() #keeps track of beds (name is key)
 		self.num_beds = 0
-		self.sensors = list() # Some sensors will be on an environment level
+		self.sensors = dict() # Some sensors will be on an environment level
 		self.num_sensors = 0
 		self.actuators = list()
-		self.num_actuators = list()
+		self.num_actuators = 0
 		self.properties = dict()
+		self.name = name
 
 	def add_bed(self, bed):
 		self.beds[bed.name] = bed
@@ -25,8 +26,7 @@ class Environment:
 		del self.beds[bed.name]
 
 	def add_sensor(self, name, new_sensor):
-		toadd = (name, new_sensor)
-		self.sensors.append(toadd)
+		self.sensors[name] = new_sensor
 		self.num_sensors += 1 
 
 	def add_actuators(self, name, actuator):

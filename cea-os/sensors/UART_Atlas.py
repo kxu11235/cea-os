@@ -7,9 +7,9 @@ sys.path.append("/Users/guptafamily/cea-os/cea-os/sensors")
 
 
 class AtlasUART(Object):
-	def __init__(self, serial_device, interface="UART", buadrate=9600):
+	def __init__(self, serial_device, buadrate=9600):
 		#Interface means something like I2C vs Uart for example
-		self.interface = interface 
+		self.interface = "UART"
 		self.serial_device = serial_device
 		self.setup = False
 		self.name = serial_device.replace("/", "_")

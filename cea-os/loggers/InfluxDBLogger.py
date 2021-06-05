@@ -27,21 +27,18 @@ class InfluxDBLogger(Logger):
 				"tags": {
 					"plant": plant
 				},
-				"time": datetime.now(),
+				"time": datetime.now() + timedelta(hours=4),
 				"fields": {
 					data_type: self.sensor.read_value()
 				}
 			}
 			json_data.append(data)
-			write_success = influxConnection.get_connection.write_points(json_data)
+			write_success = influxConnection.get_connection().write_points(json_data)
 			if not write_success:	#throws error if unable to write to database
 				print("Error: Write to database failed")
 	
 	def set_sensor(self, sensor: Sensor):	#sets the sensor being logged
-		if type(sensor) is Sensor:
 			self.sensor = sensor
-		else:
-			print("Error: Invalid sensor")
 
 	def get_sensor(self):	#returns the sensor being logged
 		return self.sensor
